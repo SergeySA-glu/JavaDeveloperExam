@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: demoProject
+
+
+  main:
+    banner-mode: off
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/demo
+    username: root
+    password: root
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+    database: mysql
+
+springdoc:
+
+  api-docs:
+    path: /api-docs
+
+  show-actuator: true
+
+  swagger-ui:
+    enabled: true
+
+server:
+  port: 8080
