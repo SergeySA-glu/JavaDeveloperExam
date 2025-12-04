@@ -1,7 +1,7 @@
 spring:
-  application:
-    name: demoProject
 
+  application:
+    name: task-tracker-service
 
   main:
     banner-mode: off
@@ -11,17 +11,25 @@ spring:
       matching-strategy: ant_path_matcher
 
   datasource:
-    url: jdbc:mysql://localhost:3306/demo
-    username: root
-    password: root
+    url: jdbc:postgresql://localhost:5432/task_tracker_db
+    username: taskuser
+    password: taskpass123
+    driver-class-name: org.postgresql.Driver
 
   jpa:
     hibernate:
       ddl-auto: update
-      naming:
-        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        use_sql_comments: true
     show-sql: true
-    database: mysql
+
+  security:
+    user:
+      name: admin
+      password: admin
 
 springdoc:
 

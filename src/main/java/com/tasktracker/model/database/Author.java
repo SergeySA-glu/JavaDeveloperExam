@@ -1,4 +1,4 @@
-package com.example.demo.model.database;
+package com.tasktracker.model.database;
 
 
 import jakarta.persistence.*;

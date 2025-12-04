@@ -1,4 +1,4 @@
-package com.example.demo.model.domain;
+package com.tasktracker.model.domain;
 
 import java.util.List;
 

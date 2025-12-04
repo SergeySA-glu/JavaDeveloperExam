@@ -1,7 +1,7 @@
-package com.example.demo.controller;
+package com.tasktracker.controller;
 
-import com.example.demo.model.domain.User;
-import com.example.demo.model.domain.UserService;
+import com.tasktracker.model.domain.User;
+import com.tasktracker.model.domain.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

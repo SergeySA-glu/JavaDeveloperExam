@@ -1,4 +1,4 @@
-package com.example.demo.model.database;
+package com.tasktracker.model.database;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;

@@ -1,6 +1,6 @@
-package com.example.demo.model.data;
+package com.tasktracker.model.data;
 
-import com.example.demo.model.domain.User;
+import com.tasktracker.model.domain.User;
 
 import java.util.List;
 

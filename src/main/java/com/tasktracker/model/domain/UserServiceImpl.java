@@ -1,6 +1,6 @@
-package com.example.demo.model.domain;
+package com.tasktracker.model.domain;
 
-import com.example.demo.model.data.UserRepository;
+import com.tasktracker.model.data.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
