@@ -43,3 +43,8 @@ springdoc:
 
 server:
   port: 8080
+
+jwt:
+  key: ${JWT_SIGNING_KEY:9ab3fee80daeaf6f8c80d420be7ad1e29a6fef1cde8efafd8a551789c479c2b6}
+  access-token-expiration: 36000000
+  refresh-token-expiration: 2592000000

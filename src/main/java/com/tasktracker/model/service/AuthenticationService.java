@@ -13,38 +13,44 @@ import com.tasktracker.model.entity.User;
 import com.tasktracker.model.repository.RefreshTokenRepository;
 import com.tasktracker.model.repository.UserRepository;
 import com.tasktracker.security.config.JwtConfig;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 
+@Service
 public class AuthenticationService {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+    private final JwtService jwtService;
+    private final PasswordEncoder passwordEncoder;
+    private final AuthenticationManager authenticationManager;
+    private final UserDetailsService userDetailsService;
+    private final RefreshTokenRepository refreshTokenRepository;
+    private final JwtConfig jwtConfig;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-
-    @Autowired
-    private RefreshTokenRepository refreshTokenRepository;
-
-    @Autowired
-    private JwtService jwtService;
-
-    @Autowired
-    private UserDetailsService userDetailsService;
-
-    @Autowired
-    private JwtConfig jwtConfig;
-
-    @Autowired
-    private AuthenticationManager authenticationManager;
+    public AuthenticationService(
+            UserRepository userRepository,
+            JwtService jwtService,
+            PasswordEncoder passwordEncoder,
+            AuthenticationManager authenticationManager,
+            UserDetailsService userDetailsService,
+            RefreshTokenRepository refreshTokenRepository,
+            JwtConfig jwtConfig
+    ) {
+        this.userRepository = userRepository;
+        this.jwtService = jwtService;
+        this.passwordEncoder = passwordEncoder;
+        this.authenticationManager = authenticationManager;
+        this.userDetailsService = userDetailsService;
+        this.refreshTokenRepository = refreshTokenRepository;
+        this.jwtConfig = jwtConfig;
+    }
 
     public JwtAuthenticationResponse signUp(SignUpRequest request) throws AlreadyExistsException {
         if (userRepository.existsByEmail(request.getEmail())){
