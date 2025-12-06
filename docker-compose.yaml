@@ -1,19 +1,21 @@
-version: "3.8"
-
 services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "8080:8080"
-    depends_on:
-      - mysql
-
-  mysql:
-    image: 'mysql:latest'
+  postgres:
+    image: postgres:16-alpine
+    container_name: task-tracker-db
     environment:
-      - 'MYSQL_ROOT_PASSWORD=root'
-      - 'MYSQL_DATABASE=demo'
+      POSTGRES_DB: task_tracker_db
+      POSTGRES_USER: taskuser
+      POSTGRES_PASSWORD: taskpass123
     ports:
-      - '3306:3306'
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - task-tracker-network
+
+volumes:
+  postgres_data:
+
+networks:
+  task-tracker-network:
+    driver: bridge
